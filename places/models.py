@@ -10,13 +10,15 @@ class Owner(models.Model):
     date_modified = models.DateTimeField(auto_now=True)
 
 
-class Map(models.Model):
+class MapInstance(models.Model):
     name = models.CharField(max_length=255)
+    owner = models.ForeignKey(Owner)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
 
 
 class MapObject(models.Model):
+    map_instance = models.ForeignKey(MapInstance)
     data = JSONField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
