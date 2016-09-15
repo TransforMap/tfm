@@ -10,6 +10,10 @@ installpostgres:
 	sudo -u postgres psql -c "CREATE USER tfm LOGIN ENCRYPTED PASSWORD 'password';"
 	sudo -u postgres createdb tfm -O tfm
 
+resetdb:
+	sudo -u postgres dropdb tfm
+	sudo -u postgres createdb tfm -O tfm
+	make setupdb
 
 setupdb:
 	.env/bin/python manage.py migrate

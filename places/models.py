@@ -18,7 +18,7 @@ class MapInstance(models.Model):
 
 
 class MapObject(models.Model):
-    map_instance = models.ForeignKey(MapInstance)
+    map = models.ForeignKey(MapInstance)
     data = JSONField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
